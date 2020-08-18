@@ -1,4 +1,8 @@
-# Hungarian-Algorithm
+# Hungarian Algorithm
+
+## Technologie
+* **C# 8.0**,
+* **.NET WinForms**.
 
 ## Informacje
 <p>Program wykorzystuje metodę węgierską. Została ona dopracowana oraz opublikowana przez Harolda Kuhna w roku 1955.
