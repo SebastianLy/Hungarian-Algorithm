@@ -1,0 +1,9 @@
+*.suo
+*.user
+*.userosscache
+Release/
+bld/
+.vs/
+*.[Cc]ache
+!*.[Cc]ache/
+*.pdb
