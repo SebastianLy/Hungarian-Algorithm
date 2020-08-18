@@ -1,24 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
 
 namespace main
-{
-    
+{ 
     public partial class Form1 : Form
     {
-
         public Form1()
-        {
-            
+        {           
             InitializeComponent();
         }
 
@@ -83,7 +75,6 @@ namespace main
             int[,] macierzLinii = new int[wymiar, wymiar];
             int[,] macierzPrzypisanych = new int[wymiar, wymiar];
             int[,] macierzPrzeciec = new int[wymiar, wymiar];
-
             if (!Flagi.Krok1_zrobiony)
             {
                 OdejmijMinWiersze(macierzLiczb);
@@ -91,7 +82,6 @@ namespace main
                 RysujCzerwoneZera(macierzLiczb);
                 Flagi.Krok1_zrobiony = true;
             }
-
             else if (!Flagi.Krok2_zrobiony)
             {
                 OdejmijMinKolumny(macierzLiczb);
@@ -99,8 +89,6 @@ namespace main
                 RysujCzerwoneZera(macierzLiczb);
                 Flagi.Krok2_zrobiony = true;
             }
-            //dataGridView1.Update(); // update musi byc zeby sleep zadzialal
-            //Thread.Sleep(2000);
             else if (!Flagi.Krok3_Krok4_petla_skonczona)
             {
                 while (!Flagi.Krok3_Krok4_petla_skonczona)
@@ -149,10 +137,8 @@ namespace main
             bool krok3i4 = false;
             bool krok3 = false;
             bool krok4 = false;
-
             OdejmijMinWiersze(macierzLiczb);
             OdejmijMinKolumny(macierzLiczb);
-
             while (!krok3i4)
             {
                 if (!krok3)
@@ -180,7 +166,6 @@ namespace main
         int[,] OdczytajPlikTekstowy(string file)
         {
             StreamReader sr = new StreamReader(file);
-
             int numberOfLines = 0;
             while (!sr.EndOfStream)
             {
@@ -188,7 +173,6 @@ namespace main
                 numberOfLines++;
             }
             sr.Close();
-
             int[,] macierzLiczb = new int[numberOfLines, numberOfLines];
             sr = new StreamReader(file);
             try
@@ -305,16 +289,6 @@ namespace main
             }
         }
 
-        private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("Readme.pdf");
-        }
-
-        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("Info.pdf");
-        }
-
         private void wyjdźToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -333,7 +307,6 @@ namespace main
             }
             return macierzLiczb;
         }
-        //Ze wzgledu na problemy z dostepnoscia do funkcji Formsa przenosze kod algorytmu tutaj
 
         public static void OdejmijMinWiersze(int[,] macierzLiczb)
         {
@@ -377,7 +350,6 @@ namespace main
                 }
             }
         }
-
 
         public static int LiczbaJedynek(int[,] tab)
         {
@@ -451,29 +423,15 @@ namespace main
         // matching from M to N 
         static int maxBPM(bool[,] bpGraph, int[,] macierzPrzypisanych, int wymiar)
         {
-            // An array to keep track of the  
-            // applicants assigned to jobs.  
-            // The value of matchR[i] is the  
-            // applicant number assigned to job i,  
-            // the value -1 indicates nobody is assigned. 
             int[] matchR = new int[wymiar];
-
-            // Initially all jobs are available 
             for (int i = 0; i < wymiar; ++i)
                 matchR[i] = -1;
-
-            // Count of jobs assigned to applicants 
             int result = 0;
             for (int u = 0; u < wymiar; u++)
             {
-                // Mark all jobs as not 
-                // seen for next applicant. 
                 bool[] seen = new bool[wymiar];
                 for (int i = 0; i < wymiar; ++i)
                     seen[i] = false;
-
-                // Find if the applicant  
-                // 'u' can get a job 
                 if (bpm(bpGraph, u, seen, matchR, wymiar))
                 {
                     result++;
@@ -485,7 +443,6 @@ namespace main
                 if (matchR[u] >= 0)
                     macierzPrzypisanych[matchR[u], u] = 1;
             }
-
             return result;
         }
 
@@ -495,8 +452,6 @@ namespace main
             int[,] macierzPrzypisanych = new int[wymiar, wymiar];
             int[] kolumnyPrzypisane = new int[wymiar];
             int[] wierszePrzypisane = new int[wymiar];
-
-            //First, assign as many tasks as possible
             bool[,] bpGraph = StworzMacierzBool(macierzLiczb);
             maxBPM(bpGraph, macierzPrzypisanych, wymiar);
             for (int i = 0; i < wymiar; i++)
@@ -510,10 +465,8 @@ namespace main
                     }
                 }
             }
-
             int[] wierszeOznaczone = new int[wymiar];
             int[] kolumnyOznaczone = new int[wymiar];
-            //Mark all rows having no assignments
             for (int i = 0; i < wymiar; i++)
             {
                 if (wierszePrzypisane[i] == 0)
@@ -521,8 +474,6 @@ namespace main
                     wierszeOznaczone[i] = 1;
                 }
             }
-
-            //Mark all (unmarked) columns having zeros in newly marked row(s)
             int[,] macierzLinii = new int[wymiar, wymiar];
             int[] rysujKolumne = new int[wymiar];
             int[] rysujWiersz = new int[wymiar];
@@ -537,7 +488,6 @@ namespace main
                                 kolumnyOznaczone[j] = 1;
                         }
                 }
-                //Mark all rows having assignments in newly marked columns 
                 for (int i = 0; i < wymiar; i++)
                 {
                     for (int j = 0; j < wymiar; j++)
@@ -547,7 +497,6 @@ namespace main
                                 wierszeOznaczone[i] = 1;
                     }
                 }
-                //Now draw lines through all marked columns and unmarked rows
                 rysujKolumne = kolumnyOznaczone;
                 
                 for (int i = 0; i < wymiar; i++)
@@ -577,13 +526,11 @@ namespace main
                         macierzPrzeciec[i, j] = 1;
                     }
                 }
-            }
-            
+            }           
             int[][,] macierz3 = new int[3][,];
             macierz3[0] = macierzLinii;
             macierz3[1] = macierzPrzypisanych;
             macierz3[2] = macierzPrzeciec;
-
             return macierz3;
         }
 
@@ -592,7 +539,6 @@ namespace main
             //znajdz pozycje przeciecia linii 1- przeciecie, 0- brak
             int wymiar = macierzLiczb.GetLength(0);
             int min = 0;
-
             //znajdz najmniejsza liczbe w macierzy
             for (int i = 0; i < wymiar; i++)
             {
@@ -600,29 +546,20 @@ namespace main
                 {
                     //poczatkowe przypisanie min
                     if (min==0 && macierzLinii[i,j]==0)
-                    {
                         min = macierzLiczb[i, j];
-                    }
                     if (macierzLiczb[i,j]<min && macierzLinii[i,j]==0)
-                    {
                         min = macierzLiczb[i, j];
-                    }
                 }
             }
-
             //dodaj min do przeciec, odejmij od reszty niezaznaczonych
             for (int i = 0; i < wymiar; i++)
             {
                 for (int j = 0; j < wymiar; j++)
                 {
                     if (macierzLinii[i, j] == 0)
-                    {
                         macierzLiczb[i, j] -= min;
-                    }
                     if (macierzPrzeciec[i,j]==1)
-                    {
                         macierzLiczb[i, j] += min;
-                    }
                 }
             }
             return macierzLiczb;
@@ -634,12 +571,11 @@ namespace main
             for (int i = 0; i < wymiar; i++)
             {
                 for (int j = 0; j < wymiar; j++)
-                {
                     Console.Write(macierzLiczb[i, j] + " ");
-                }
                 Console.WriteLine();
             }
         }
+
         public static bool MaNiezaznaczoneZera(int[,] macierzLinii, int[,] macierzLiczb)
         {
             int wymiar = macierzLiczb.GetLength(0);
@@ -658,7 +594,6 @@ namespace main
         {
             int wymiar = macierzLinii.GetLength(0);
             int liczbaLinii=0;
-
             for (int i = 0; i < wymiar; i++)
             {
                 int dlugosc = 0;
@@ -668,13 +603,10 @@ namespace main
                     {
                         dlugosc++;
                         if (dlugosc == wymiar && liczbaLinii!=wymiar) 
-                        {
                             liczbaLinii++;
-                        }
                     }
                 }
             }
-
             for (int i = 0; i < wymiar; i++)
             {
                 int dlugosc = 0;
@@ -684,9 +616,7 @@ namespace main
                     {
                         dlugosc++;
                         if (dlugosc == wymiar && liczbaLinii != wymiar)
-                        {
                             liczbaLinii++;
-                        }
                     }
                 }
             }
@@ -700,6 +630,7 @@ namespace main
             button4.Visible = false;
         }
     }
+
     //globalne flagi potrzebne w przyciku krokowym
     public class Flagi
     {
@@ -708,12 +639,11 @@ namespace main
         public static bool Krok3_zrobiony = false;
         public static bool Krok4_zrobiony = false;
         public static bool Krok3_Krok4_petla_skonczona = false;
-
     }
+
     public class GlobalneZmienne
     {
         public static int[,] zapisanaMacierz;
         public static int[,] zapisanaMacierzPrzypisanych;
     }
 }
-

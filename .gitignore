@@ -1,9 +1,12 @@
 *.suo
 *.user
 *.userosscache
+*.pdb
+Debug/
 Release/
 bld/
+bin/
+obj/
 .vs/
 *.[Cc]ache
 !*.[Cc]ache/
-*.pdb

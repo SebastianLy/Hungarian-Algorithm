@@ -34,8 +34,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.wyczyśćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyjdźToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -98,8 +96,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wyczyśćToolStripMenuItem,
-            this.pomocToolStripMenuItem,
-            this.oProgramieToolStripMenuItem,
             this.wyjdźToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -111,28 +107,14 @@
             // wyczyśćToolStripMenuItem
             // 
             this.wyczyśćToolStripMenuItem.Name = "wyczyśćToolStripMenuItem";
-            this.wyczyśćToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.wyczyśćToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.wyczyśćToolStripMenuItem.Text = "Wyczyść";
             this.wyczyśćToolStripMenuItem.Click += new System.EventHandler(this.wyczyśćToolStripMenuItem_Click);
-            // 
-            // pomocToolStripMenuItem
-            // 
-            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
-            this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
-            // 
-            // oProgramieToolStripMenuItem
-            // 
-            this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
-            this.oProgramieToolStripMenuItem.Text = "O programie";
-            this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
             // 
             // wyjdźToolStripMenuItem
             // 
             this.wyjdźToolStripMenuItem.Name = "wyjdźToolStripMenuItem";
-            this.wyjdźToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.wyjdźToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.wyjdźToolStripMenuItem.Text = "Wyjdź";
             this.wyjdźToolStripMenuItem.Click += new System.EventHandler(this.wyjdźToolStripMenuItem_Click);
             // 
@@ -197,8 +179,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyjdźToolStripMenuItem;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
