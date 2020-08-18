@@ -31,7 +31,7 @@ wszystkich wierszy nie byliśmy w stanie dokonad wszystkich n przypisao to przec
 z kolumny pierwszej i idziemy w prawo. Może wystąpid taka sytuacja, że będziemy mieli więcej zer w danym
 wierszu. Wtedy należy arbitralnie wybrad przypisanie.
 
-##Instrukcja obsługi
+## Instrukcja obsługi
 Po uruchomieniu programu pojawia się prosta aplikacja okienkowa.
 
 ![Wygląd aplikacji](Wyglad_Aplikacji.png)
